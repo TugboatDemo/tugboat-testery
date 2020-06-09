@@ -31,6 +31,11 @@ services:
                 - wp --allow-root --path="${DOCROOT}" option set permalink_structure /%postname%/
                 - wp --allow-root --path="${DOCROOT}" rewrite flush --hard
 
+                # Install Testery CLI
+                - python --version
+                - pip --version
+                - pip install testery
+
             update:
 
                 # Import uploads
@@ -48,6 +53,9 @@ services:
                 else
                     wp --allow-root --path="${DOCROOT}" search-replace 'pr4-4gy7wboy23bse01egk4dkenyrtspulgl.tugboat.qa' "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
                 fi
+
+                echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
+                testery --help
 
         visualdiffs:
             - /
