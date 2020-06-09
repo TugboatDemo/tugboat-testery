@@ -9,3 +9,7 @@
 
 # Local wordpress config
 /docroot/wp-config.local.php
+
+# Ignore node modules
+/node_modules/
+*.log
