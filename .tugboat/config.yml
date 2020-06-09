@@ -32,9 +32,11 @@ services:
                 - wp --allow-root --path="${DOCROOT}" rewrite flush --hard
 
                 # Install Testery CLI
-                - python --version
-                - pip --version
-                - pip install testery
+                - apt-get install python3
+                - apt-get install python3-pip
+                - python3 --version
+                - pip3 --version
+                - pip3 install testery
 
             update:
 
