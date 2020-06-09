@@ -57,7 +57,7 @@ services:
                 fi
 
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
-                testery --help
+                testery create-test-run --token "$TESTERY_TOKEN" --include-tags "pass" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery"
 
         visualdiffs:
             - /
