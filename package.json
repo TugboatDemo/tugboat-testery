@@ -1,0 +1,25 @@
+{
+    "name": "sample-tugboat-testery",
+    "version": "1.0.0",
+    "description": "Sample project with Tugboat and Testery",
+    "main": "index.js",
+    "scripts": {
+      "test": "./node_modules/.bin/wdio"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/node": "^7.8.4",
+        "@babel/preset-env": "^7.8.4",
+        "@wdio/cli": "^6.0.16",
+        "@wdio/cucumber-framework": "^6.0.16",
+        "@wdio/local-runner": "^6.0.16",
+        "@wdio/spec-reporter": "^6.0.16",
+        "@wdio/sync": "^6.0.16",
+        "chromedriver": "^81.0.0",
+        "cucumber": "^6.0.5",
+        "wdio-chromedriver-service": "^6.0.1",
+        "chai": "^4.2.0",
+        "minimist": "^1.2.5",
+        "webdriverio": "^6.0.16"
+    }
+}
