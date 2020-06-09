@@ -34,8 +34,6 @@ services:
                 # Install Testery CLI
                 - apt-get install python3
                 - apt-get install python3-pip
-                - python3 --version
-                - pip3 --version
                 - pip3 install testery
 
             update:
@@ -57,7 +55,7 @@ services:
                 fi
 
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
-                testery create-test-run --token "$TESTERY_TOKEN" --include-tags "pass" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery"
+                testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery"
 
         visualdiffs:
             - /
