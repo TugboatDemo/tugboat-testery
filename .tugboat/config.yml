@@ -34,7 +34,7 @@ services:
                 # Install Testery CLI
                 - apt-get install python3
                 - apt-get install python3-pip
-                - pip3 install testery
+                - pip3 install testery --upgrade
 
             update:
 
