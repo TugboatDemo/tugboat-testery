@@ -1,7 +1,7 @@
 Feature: Navigation
 
-Scenario: User Searches Yahoo
-  When I navigate to "http://www.yahoo.com"
+Scenario: User Navigates to Preview
+  When I navigate to preview
   Then the page title is 'Yahoo'
 
 Scenario: User Searches Google
