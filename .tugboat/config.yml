@@ -65,7 +65,7 @@ services:
                 fi
 
                 # Start a test run.
-                testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW_ID}"
+                testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW}"
 
         visualdiffs:
             - /
