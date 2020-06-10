@@ -2,7 +2,7 @@ Feature: Navigation
 
 Scenario: User Navigates to Preview
   When I navigate to preview
-  Then the page title is 'Yahoo'
+  Then the page title is 'The Tug Life – I didn\'t choose the Tug Life, the Tug Life chose me'
 
 Scenario: User Searches Google
   When I navigate to "http://www.google.com"
