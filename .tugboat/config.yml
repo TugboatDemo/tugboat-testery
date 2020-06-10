@@ -9,6 +9,7 @@ services:
                 # Install prerequisite packages
                 - apt-get update
                 - apt-get install -y rsync
+                - apt-get install -y jq
 
                 # Turn on URL rewriting.
                 - a2enmod rewrite
@@ -34,9 +35,6 @@ services:
                 # Install Testery CLI
                 - apt-get install python3
                 - apt-get install python3-pip
-                - python3 --version
-                - pip3 --version
-                - pip3 install testery
 
             update:
 
@@ -57,7 +55,16 @@ services:
                 fi
 
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
-                testery create-test-run --token "$TESTERY_TOKEN" --include-tags "pass" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery"
+                pip3 install testery --upgrade
+
+                # Create Testery environment if this is a new preview.
+                testery_env=$(testery list-environments --token  "$TESTERY_TOKEN" | jq '.[] | select (.key == "${TUGBOAT_PREVIEW_ID}")')
+                if [ -z "${testery_env}" ]; then
+                    testery create-environment --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW_ID}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
+                fi
+
+                # Start a test run.
+                testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW_ID}"
 
         visualdiffs:
             - /

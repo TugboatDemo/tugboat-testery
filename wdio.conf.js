@@ -199,8 +199,9 @@ exports.config = {
   /**
    * Runs after a Cucumber step
    */
-  // afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
-  // },
+   afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
+    browser.saveScreenshot("./screenshots/" + Math.random() + ".png");
+   },
   /**
    * Runs after a Cucumber scenario
    */
