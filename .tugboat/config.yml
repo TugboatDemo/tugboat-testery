@@ -55,7 +55,7 @@ services:
 
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
                 pip3 install testery --upgrade
-                testery create-environment --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW_ID}" --name "${TUGBOAT_PREVIEW_ID}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
+                testery create-environment --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW_ID}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
                 testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW_ID}"
 
         visualdiffs:
