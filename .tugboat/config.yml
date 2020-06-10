@@ -34,7 +34,6 @@ services:
                 # Install Testery CLI
                 - apt-get install python3
                 - apt-get install python3-pip
-                - pip3 install testery --upgrade
 
             update:
 
@@ -55,6 +54,7 @@ services:
                 fi
 
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
+                pip3 install testery --upgrade
                 testery create-environment --key "${TUGBOAT_PREVIEW_ID}" --name "${TUGBOAT_PREVIEW_ID}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
                 testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW_ID}"
 
