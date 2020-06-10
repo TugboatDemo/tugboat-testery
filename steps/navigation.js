@@ -9,6 +9,16 @@ When("I navigate to preview", function() {
   browser.url(process.env.TUGBOAT_DEFAULT_SERVICE_URL);
 });
 
+When("I search for (.*)", function(query) {
+  $(".search-toggle").click();
+  $("#search-form-1").sendKeys(query + "\n");
+});
+
+Then("there are (.*) search results", function(count) {
+  const actualCount = $(".intro-text").getText();
+  expect(actualCount).to.equal("We found " + count + "result for your search.");
+})
+
 Then("the page title is {string}", { timeout: 60 * 1000 }, function(title) {
   const expected = browser.getTitle();
   expect(title).to.equal(expected);
