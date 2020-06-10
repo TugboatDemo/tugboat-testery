@@ -58,7 +58,7 @@ services:
                 pip3 install testery --upgrade
 
                 # Create Testery environment if this is a new preview.
-                testery_env=$(testery list-environments --token  "$TESTERY_TOKEN" | jq '.[] | select (.key == "${TUGBOAT_PREVIEW_ID}")'))
+                testery_env=$(testery list-environments --token  "$TESTERY_TOKEN" | jq '.[] | select (.key == "${TUGBOAT_PREVIEW_ID}")')
                 if [ -z "${testery_env}" ]; then
                     testery create-environment --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW_ID}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
                 fi
