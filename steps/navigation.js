@@ -9,7 +9,7 @@ When("I navigate to preview", function() {
   browser.url(process.env.TUGBOAT_DEFAULT_SERVICE_URL);
 });
 
-When("I search for \"{string}\"", function(query) {
+When("I search for {string}", function(query) {
   browser.$(".search-toggle").click();
   browser.$("#search-form-1").sendKeys(query + "\n");
 });
