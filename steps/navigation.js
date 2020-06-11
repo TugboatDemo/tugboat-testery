@@ -14,7 +14,7 @@ When("I search for \"{string}\"", function(query) {
   $("#search-form-1").sendKeys(query + "\n");
 });
 
-Then("there are {string} search results", function(count) {
+Then("there are {digit} search results", function(count) {
   const actualCount = $(".intro-text").getText();
   expect(actualCount).to.equal("We found " + count + "results for your search.");
 });
