@@ -10,8 +10,8 @@ When("I navigate to preview", function() {
 });
 
 When("I search for \"{string}\"", function(query) {
-  $(".search-toggle").click();
-  $("#search-form-1").sendKeys(query + "\n");
+  browser.$(".search-toggle").click();
+  browser.$("#search-form-1").sendKeys(query + "\n");
 });
 
 Then("there are {int} search results", function(count) {
