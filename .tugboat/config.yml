@@ -57,13 +57,8 @@ services:
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
                 pip3 install testery --upgrade
 
-                # Create Testery environment if this is a new preview.
-                testery_env=$(testery list-environments --token  "$TESTERY_TOKEN" | jq -r '.[] | select (.name == "${TUGBOAT_PREVIEW}") | .name')
-                echo "${testery_env}"
-                if [ "${testery_env}" != "${TUGBOAT_PREVIEW}" ]; then
-                    testery create-environment --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
-                fi
-
+                testery update-environment --create-if-not-exists --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
+                
                 # Start a test run.
                 testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW}"
 
