@@ -1,5 +1,10 @@
-import { When, Then } from "cucumber";
+import { Before, Given, When, Then } from "cucumber";
+import HomePage from "../pages/HomePage";
 const { expect } = require("chai");
+
+Before(() => {
+  browser.maximizeWindow();
+})
 
 When("I navigate to {string}", function(url) {
   browser.url(url);
@@ -10,13 +15,7 @@ When("I navigate to preview", function() {
 });
 
 When(/^I search for (.*)/, function(query) {
-  browser.pause(2000);
-  const toggle = browser.$(".search-toggle");
-  browser.execute("arguments[0].click();", toggle);
-  browser.pause(2000);
-  browser.$("#search-form-1").setValue(query + "\n");
-  browser.pause(2000);
-  expect(true).to.equal(true);
+  HomePage.search(query);
 });
 
 Then(/there are (.*) search results/, function(count) {
