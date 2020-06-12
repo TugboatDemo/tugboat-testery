@@ -10,6 +10,7 @@ When("I navigate to preview", function() {
 });
 
 When(/^I search for (.*)/, function(query) {
+  browser.pause(2000);
   browser.$(".search-toggle").click();
   browser.pause(2000);
   browser.$("#search-form-1").setValue(query + "\n");
