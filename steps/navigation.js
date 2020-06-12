@@ -11,7 +11,8 @@ When("I navigate to preview", function() {
 
 When(/^I search for (.*)/, function(query) {
   browser.pause(2000);
-  browser.$(".search-toggle").click();
+  const toggle = browser.$(".search-toggle");
+  browser.execute("arguments[0].click();", toggle);
   browser.pause(2000);
   browser.$("#search-form-1").setValue(query + "\n");
   browser.pause(2000);
