@@ -19,6 +19,7 @@ When(/^I search for (.*)/, function(query) {
 });
 
 Then(/there are (.*) search results/, function(count) {
+  if (process.env.DEBUG) {browser.debug();}
   const actualCount = $(".intro-text").getText();
   expect(actualCount).to.equal("We found " + count + " results for your search.");
 });
@@ -31,3 +32,4 @@ Then("the page title is {string}", { timeout: 60 * 1000 }, function(title) {
 Then("take a screenshot", function() {
   browser.saveScreenshot("./screenshots/" + Math.random() + ".png");
 });
+
