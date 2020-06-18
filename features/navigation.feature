@@ -7,4 +7,4 @@ Scenario: User Navigates to Preview
 Scenario: User Searches for Tugboat
   When I navigate to preview
   When I search for tugboat
-  Then there are 6 search results
+  Then there are 5 search results
