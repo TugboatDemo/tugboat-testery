@@ -29,6 +29,10 @@ Then("the page title is {string}", { timeout: 60 * 1000 }, function(title) {
   expect(title).to.equal(expected);
 });
 
+When("I post a comment", function() {
+  HomePage.postComment("Chris", "chris.harbert@testery.io", "comment - " + Math.random())
+})
+
 Then("take a screenshot", function() {
   browser.saveScreenshot("./screenshots/" + Math.random() + ".png");
 });

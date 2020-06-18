@@ -9,3 +9,7 @@ Scenario: User Searches for Tugboat
   When I navigate to preview
   When I search for tugboat
   Then there are 5 search results
+
+Scenario: User Posts Comment
+  When I navigate to preview
+  And I post a comment
