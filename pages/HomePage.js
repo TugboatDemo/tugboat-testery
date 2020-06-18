@@ -4,7 +4,7 @@ class HomePage {
     get searchBox() { return $("#search-form-1"); }
     get commentLink() { return $(".post-comment-link")}
     get comment() { return $("#comment")}
-    get author() { return $("#autho")}
+    get author() { return $("#author")}
     get email() { return $("#email")}
     get submit() { return $("#submit")}
 
