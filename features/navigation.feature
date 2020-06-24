@@ -8,7 +8,7 @@ Scenario: User Navigates to Preview
 Scenario: User Searches for Tugboat
   When I navigate to preview
   When I search for tugboat
-  Then there are 5 search results
+  Then there are 10 search results
 
 Scenario: User Posts Comment
   When I navigate to preview
