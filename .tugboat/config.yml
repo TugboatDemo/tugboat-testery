@@ -33,8 +33,7 @@ services:
                 - wp --allow-root --path="${DOCROOT}" rewrite flush --hard
 
                 # Install Testery CLI
-                - apt-get install python3
-                - apt-get install python3-pip
+                - apt-get install -y python3 python3-pip
 
             update:
 
@@ -57,10 +56,22 @@ services:
                 echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
                 pip3 install testery --upgrade
 
-                testery update-environment --create-if-not-exists --token "$TESTERY_TOKEN" --key "${TUGBOAT_PREVIEW}" --name "${TUGBOAT_PREVIEW}" --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
-                
+                testery update-environment \
+                    --create-if-not-exists \
+                    --token "$TESTERY_TOKEN" \
+                    --key "${TUGBOAT_PREVIEW}" \
+                    --name "${TUGBOAT_PREVIEW}" \
+                    --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
                 # Start a test run.
                 testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW}"
+
+            online:
+                - echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
+                - testery create-test-run
+                    --token "$TESTERY_TOKEN"
+                    --git-ref "$TUGBOAT_PREVIEW_SHA"
+                    --project "testery"
+                    --environment "${TUGBOAT_PREVIEW}"
 
         visualdiffs:
             - /
