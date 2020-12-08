@@ -62,8 +62,6 @@ services:
                     --key "${TUGBOAT_PREVIEW}" \
                     --name "${TUGBOAT_PREVIEW}" \
                     --variable "TUGBOAT_DEFAULT_SERVICE_URL=${TUGBOAT_DEFAULT_SERVICE_URL}"
-                # Start a test run.
-                testery create-test-run --token "$TESTERY_TOKEN" --git-ref "$TUGBOAT_PREVIEW_SHA" --project "testery" --environment "${TUGBOAT_PREVIEW}"
 
             online:
                 - echo "Starting test run for ${TUGBOAT_SERVICE_URL_HOST}"
