@@ -71,7 +71,7 @@ services:
                     --project "testery"
                     --environment "${TUGBOAT_PREVIEW}"
 
-        visualdiffs:
+        urls:
             - /
             - /about/
             - /contact/
