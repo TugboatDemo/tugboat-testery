@@ -18,7 +18,7 @@
         "chai": "^4.2.0",
         "chromedriver": "^83.0.0",
         "cucumber": "^6.0.5",
-        "minimist": "^1.2.5",
+        "minimist": "^1.2.6",
         "wdio": "^4.0.0",
         "wdio-chromedriver-service": "^6.0.1",
         "webdriverio": "^6.0.16"
